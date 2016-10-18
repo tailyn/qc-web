@@ -1,0 +1,64 @@
+@charset "utf-8";
+ body{
+     width: 900px;
+     color: #FFF;
+     margin:0 auto;
+     font-family: sans-serif, "微軟正黑體";
+     }
+     
+    #header{
+     background-color: #425660;
+     padding: 20px;
+     }
+
+     #nav{
+     background-color: #20292F;
+     padding: 5px;
+     }
+
+     #aside1{
+     width: 180px;
+     height: 700px;
+     text-align: center;
+     background-color: #63808F;
+     padding:20px 10px;
+     float: left;
+     }
+
+     #aside2{
+     width: 150px;
+     height: 300px;
+     text-align: center;
+     background-color: #63808F;
+     padding:20px 10px;
+     float: right;
+     }
+
+     #section{
+     width: 660px;
+     height: 700px;
+     background-color: #849DAA;
+     line-height: 1.5em;
+     padding: 20px;
+     float: left;
+     }
+
+     #footer{
+     padding:20px;
+     background-color: #425660;
+     clear: both;
+     }
+  
+     h1{
+     font-family: sans-serif, "微軟正黑體";
+     font-size: 30px;
+     color: #FFF;
+     text-align: left;
+     }
+     
+     h2{
+     font-family: sans-serif, "微軟正黑體";
+     font-size: 30px;
+     color: #2E2EFE;
+     text-align: center;
+     }

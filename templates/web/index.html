@@ -13,8 +13,10 @@
 <body>
   <br>
   <aside id="aside1">
-    {% for row in test_items %} 
-    <h1> {{row}} <img style="float:right;" src="static/drawing/green.png" width="30" height="30" ></h1> 
+    {% set count = 1 %}
+    {% for row in test_items %}
+    <h1> {{row}} {{state_items[count]}} <img style="float:right;" src="static/drawing/green.png" width="30" height="30" ></h1> 
+    {% set count = count + 1 %}
     {% endfor %}
   </aside>
     

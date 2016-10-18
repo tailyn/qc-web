@@ -13,12 +13,9 @@
 <body>
   <br>
   <aside id="aside1">
-    <h1>CPU <img style="float:right;" src="static/drawing/green.png" width="30" height="30" ></h1>
-    <h1>WLAN <img style="float:right;" src="static/drawing/red.png" width="30" height="30" ></h1>
-    <h1>APP <img style="float:right;" src="static/drawing/green.png" width="30" height="30"></h1>
-    <h1>LTE <img style="float:right;" src="static/drawing/red.png" width="30" height="30" ></h1>
-    <h1>BLE <img style="float:right;" src="static/drawing/green.png" width="30" height="30"></h1>
-    <h1>PWR <img style="float:right;" src="static/drawing/red.png" width="30" height="30" ></h1>
+    {% for row in test_items %} 
+    <h1> {{row}} <img style="float:right;" src="static/drawing/green.png" width="30" height="30" ></h1> 
+    {% endfor %}
   </aside>
     
   <section id="section">

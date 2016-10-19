@@ -32,10 +32,10 @@ cat $CONFIG | while read line; do
 		./functions/uart23_test.sh
 	fi
 	if [[ $line == "RTC" ]]; then
-		echo "Failed"
+		./functions/rtc_test.sh
 	fi
 	if [[ $line == "Switch LAN" ]]; then
-		echo "Failed"
+		./functions/lan_test.sh
 	fi
 	if [[ $line == "USB" ]]; then
 		./functions/usb_test.sh
@@ -51,17 +51,17 @@ cat $CONFIG | while read line; do
 		echo "Failed"
 	fi
 	if [[ $line == "mPCIE" ]]; then
-		echo "Failed"
+		./functions/pcie_test.sh
 	fi
 	if [[ $line == "CAN bus" ]]; then
-		echo "Failed"
+		./functions/can_test.sh
 	fi
 
 	if [[ $line == "LED" ]]; then
-		echo "Failed"
+		./functions/led_test.sh
 	fi
 
 	if [[ $line == "GPIO" ]]; then
-		echo "Failed"
+		./functions/gpio_test.sh
 	fi
 done

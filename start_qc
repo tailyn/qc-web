@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true; do 
+	cd tn-qc
+	sudo ./run_qc.sh > results_temp
+	cp results_temp results
+	cd -
+done

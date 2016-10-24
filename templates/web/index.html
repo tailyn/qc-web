@@ -5,24 +5,87 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
        <title>index</title>
-       <link href="static/css/style.css" rel="stylesheet" type="text/css" />
-       <script src="static/js/myScript.js"></script>
-  </head>
+       <link href="/status/css/style.css" rel="stylesheet" type="text/css" />
+       <script src="static/js/myScript.js"></script>   
+  </head> 
+<body class="content" onload="run();">
+ <!--<aside id="aside1">-->
+ <!--</aside>-->
+	<table border="1" cellpadding="5" style="" align="center" bgcolor="#63808F" width="400" height="300">
+	<h1>
+	<tr><td colspan="3">ST7b2</td></tr>
+	<tr><td id="demo"></td><td id="demo1"></td><td>ST7B2 Function page</td></tr>
+	</h1>	
+	</table>
+<script type="text/javascript">
+  
+function run() 
+	{  
+		{% set count = 1 %}
+		{% for row in test_items %}
+		var row="{{row}}";
+		var state_items="{{state_items[count]}}";
+		var demo = document.getElementById("demo");
+	    	var td = document.createElement("td");
+		var td1 = document.createElement("td")
+		var tr = document.createElement("tr");
+		var tr1 = document.createElement("tr");
+		var image_fail = document.createElement("img");
+		var image_pass = document.createElement("img");
+		var i_fail = "Failed";
+		var i_pass = "Pass";
+		//fail image
+		image_fail.setAttribute("src", "static/drawing/red.png");
+		image_fail.setAttribute("height", "17");
+		image_fail.setAttribute("width", "17");
+		//pass image
+		image_pass.setAttribute("src", "static/drawing/green.png");
+		image_pass.setAttribute("height", "17");
+		image_pass.setAttribute("width", "17");
+	
+		if (state_items == i_fail)	
+			{
+			
+				td.innerHTML = row;
+				tr.appendChild(td);
+				demo.appendChild(tr);
+				//image
+				tr1.appendChild(image_fail);
+				demo1.appendChild(tr1);
+			}
+		else if ( state_items == i_pass)
+			{
+			
+				td.innerHTML = row;
+				tr.appendChild(td);
+				demo.appendChild(tr);
+				//image
+				tr1.appendChild(image_pass);
+				demo1.appendChild(tr1);
+			}
+		else 
+			{
+				td.innerHTML = row+"    "+state_items;
+			
+			}
+		//td.innerHTML = row+"    "+state_items;
+		//td1.innerHTML = state_items;
+		
+	
+		//td.appendChild(td1);
+		//tr.appendChild(td);
+		//demo.appendChild(td);	
+	    	{% set count = count + 1 %}
+	    	{% endfor %}
 
-
-<body>
-  <br>
-  <aside id="aside1">
-    {% set count = 1 %}
-    {% for row in test_items %}
-    <h1> {{row}} {{state_items[count]}} <img style="float:right;" src="static/drawing/green.png" width="30" height="30" ></h1> 
-    {% set count = count + 1 %}
-    {% endfor %}
-  </aside>
-    
-  <section id="section">
-    <h2>ST7B2 </h2>
-  </section>
+    	}
+	    /*
+	    for (var i = 0; i < station.length; i++) {
+		create_new_row_button(document.getElementById("brook"),
+		                      station[i].name); 
+	    }
+	      */
+</script>
 </body>
 
 </html>

@@ -17,7 +17,7 @@
      }
 
      #aside1{
-     width: 180px;
+     width: 200px;
      height: 700px;
      text-align: center;
      background-color: #63808F;
@@ -26,7 +26,7 @@
      }
 
      #aside2{
-     width: 150px;
+     width: 200px;
      height: 300px;
      text-align: center;
      background-color: #63808F;
@@ -35,7 +35,7 @@
      }
 
      #section{
-     width: 660px;
+     width: 500px;
      height: 700px;
      background-color: #849DAA;
      line-height: 1.5em;
@@ -62,3 +62,4 @@
      color: #2E2EFE;
      text-align: center;
      }
+    

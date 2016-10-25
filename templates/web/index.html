@@ -9,8 +9,6 @@
        <script src="static/js/myScript.js"></script>   
   </head> 
 <body class="content" onload="run();">
- <!--<aside id="aside1">-->
- <!--</aside>-->
 	<table border="1" cellpadding="5" style="" align="center" bgcolor="#63808F" width="400" height="300">
 	<h1>
 	<tr><td colspan="3">ST7b2</td></tr>
@@ -21,7 +19,7 @@
   
 function run() 
 	{  
-		{% set count = 1 %}
+		{% set count = 0 %}
 		{% for row in test_items %}
 		var row="{{row}}";
 		var state_items="{{state_items[count]}}";
@@ -63,28 +61,12 @@ function run()
 				tr1.appendChild(image_pass);
 				demo1.appendChild(tr1);
 			}
-		else 
-			{
-				td.innerHTML = row+"    "+state_items;
-			
-			}
-		//td.innerHTML = row+"    "+state_items;
-		//td1.innerHTML = state_items;
-		
 	
-		//td.appendChild(td1);
-		//tr.appendChild(td);
-		//demo.appendChild(td);	
 	    	{% set count = count + 1 %}
 	    	{% endfor %}
 
     	}
-	    /*
-	    for (var i = 0; i < station.length; i++) {
-		create_new_row_button(document.getElementById("brook"),
-		                      station[i].name); 
-	    }
-	      */
+	    
 </script>
 </body>
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Author: Wig
 # Only for ARM base platform
@@ -16,7 +16,7 @@ cat $CONFIG | while read line; do
 	if [[ $line == "SD" ]]; then
 		./functions/sd_test.sh
 	fi
-	if [[ $line == "Nand flash" ]]; then
+	if [[ $line == "Nand_flash" ]]; then
 		./functions/nand_test.sh
 	fi
 	if [[ $line == "I2C1" ]]; then
@@ -34,7 +34,7 @@ cat $CONFIG | while read line; do
 	if [[ $line == "RTC" ]]; then
 		./functions/rtc_test.sh
 	fi
-	if [[ $line == "Switch LAN" ]]; then
+	if [[ $line == "Switch_LAN" ]]; then
 		./functions/lan_test.sh
 	fi
 	if [[ $line == "USB" ]]; then
@@ -53,7 +53,7 @@ cat $CONFIG | while read line; do
 	if [[ $line == "mPCIE" ]]; then
 		./functions/pcie_test.sh
 	fi
-	if [[ $line == "CAN bus" ]]; then
+	if [[ $line == "CAN_bus" ]]; then
 		./functions/can_test.sh
 	fi
 

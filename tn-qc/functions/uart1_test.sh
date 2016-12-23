@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [[ "$(ls /dev/ttyO0)" ]]; then
 	echo "Pass"

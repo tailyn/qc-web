@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-if [[ "$(lsusb | grep "Quectel")" ]]; then
+if [[ "$(lsusb | grep "05c6:9003")" ]]; then
 	echo "Pass"
 else
 	echo "Failed"

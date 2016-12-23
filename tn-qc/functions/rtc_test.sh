@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-if [[ "$(sudo hwclock)" ]]; then
+if [[ "$(hwclock)" ]]; then
 	echo "Pass"
 else
 	echo "Failed"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [[ "$(ifconfig | grep "can0")" ]]; then
 	echo "Pass"

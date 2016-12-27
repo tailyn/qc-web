@@ -1,8 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
-while true; do 
-	cd tn-qc
-	sudo ./run_qc.sh > results_temp
-	cp results_temp results
-	cd -
+CONFIG=./tn-qc/st7b2.conf
+
+cd tn-qc
+./run_qc.sh &
+cd -
+
+while true; do
+	
+	cat $CONFIG | while read line; do
+		cat tn-qc/results/$line/result.txt >> tn-qc/result_temp
+	done
+	cp tn-qc/result_temp tn-qc/result_final
+	rm tn-qc/result_temp
 done

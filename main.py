@@ -16,7 +16,7 @@ def main():
 	(out, err) = proc.communicate()
 	test_items=out.split("\n")
 
-	proc = subprocess.Popen(["cat ./tn-qc/results", ""], stdout=subprocess.PIPE, shell=True)
+	proc = subprocess.Popen(["cat ./tn-qc/result_final", ""], stdout=subprocess.PIPE, shell=True)
 	(out, err) = proc.communicate()
 	state_items=out.split("\n")
 

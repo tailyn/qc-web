@@ -1,11 +1,16 @@
 #!/bin/sh
 
+while true; do
+
 if [[ "$(dmesg | grep "Mass Storage")" ]]; then
 	if [[ "$(cat /proc/partitions | grep "sd")" ]]; then
-        	echo "Pass"
+        	echo "Pass" > results/USB/result.txt
 	else
-        	echo "Failed"
+        	echo "Failed" > results/USB/result.txt
 	fi
 else
-	echo "Failed"
+	echo "Failed" > results/USB/result.txt
 fi
+
+sleep 2
+done

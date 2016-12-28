@@ -3,7 +3,7 @@
 while true; do
 
 cat /dev/ttyO2 > uart23_stat &
-sleep 0.1
+sleep 0.5
 echo "123" > /dev/ttyO1
 
 uart_res=$(head -1 uart23_stat)
@@ -21,6 +21,5 @@ ps_filter=$(head -1 uart23_stat)
 kill -9 $ps_filter
 rm uart23_stat
 
-sync
-sleep 2
+sleep 20
 done

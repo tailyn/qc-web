@@ -8,8 +8,8 @@
        <!--<link href="/status/css/style.css" rel="stylesheet" type="text/css" />-->
        <script src="static/js/myScript.js"></script>   
   </head> 
-<body class="content" onload="run();run_cpu();">
-	<table border="1" cellpadding="5" style="" align="center" bgcolor="#63808F" width="450" height="300">
+<body class="content" onload="run();">
+	<table border="1" cellpadding="5" style="" align="center" bgcolor="#6fc5f2" width="450" height="300">
 	<h1>
 	<tr><td colspan="6" >ST7b2</td></tr>
 	<tr><td rowspan="4" id="demo"></td>
@@ -75,7 +75,7 @@ function run()
 		
 	    	{% set count = count + 1 %}
 	    	{% endfor %}
-
+		run_cpu();
 		lan1_ping();
 		lan2_ping();
 		lan3_ping();
@@ -262,7 +262,7 @@ function lan4_ping()
 			tr4_lanPort4.appendChild(lan_Port_image_pass);
 			demolanPort4.appendChild(tr4_lanPort4);
 		}
-		else if (i_lan_Port_fail == lan1port_items)
+		else if (i_lan_Port_fail == lan4port_items)
 		{
 			tr4_lanPort4.appendChild(lan_Port_image_fail);
 			demolanPort4.appendChild(tr4_lanPort4);	

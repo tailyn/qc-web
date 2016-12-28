@@ -2,7 +2,7 @@
 
 while true; do
 
-if [[ "$(free -m)" ]]; then
+if [[ "$(memtester 20 1)" ]]; then
 	echo "Pass" > results/Memory/result.txt
 else
 	echo "Failed" > results/Memory/result.txt

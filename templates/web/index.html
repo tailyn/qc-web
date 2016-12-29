@@ -9,18 +9,23 @@
        <script src="static/js/myScript.js"></script>   
   </head> 
 <body class="content" onload="run();">
-	<table border="1" cellpadding="5" style="" align="center" bgcolor="#6fc5f2" width="450" height="300">
+	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
 	<h1>
 	<tr><td colspan="6" >ST7b2</td></tr>
-	<tr><td rowspan="4" id="demo"></td>
+	<tr>
+	<td rowspan="4" id="demo"></td>
 	<td rowspan="4" id="demo1"></td>
-	<td colspan="4" id="democpu"></td></tr>
-	<tr><td id="demolanPort1"  align='center'></td><td id="demolanPort2"  align='center'></td><td id="demolanPort3"  align='center'></td><td id="demolanPort4"  align='center'></td></tr>
+	<td colspan="2" id="democpu"></td>
+	<td colspan="2" id="demotemp"></td>
+	</tr>
+	<tr>
+	<td id="demolanPort1"  align='center'></td>
+	<td id="demolanPort2"  align='center'></td>
+	<td id="demolanPort3"  align='center'></td>
+	<td id="demolanPort4"  align='center'></td>
+	</tr>
 	<tr><td colspan="4">image</td></tr>
-	<tr><td colspan="4">image</td></tr>
-	<!--<tr><td colspan="3">ST7b2</td></tr>
-	<tr><td id="demo"></td><td id="demo1"></td><td>ST7B2 Function page</td></tr>-->
-	
+	<tr><td colspan="4"><button type="button">I'm Button</button></td></tr>
 	</h1>	
 	</table>
 <script type="text/javascript">
@@ -76,6 +81,7 @@ function run()
 	    	{% set count = count + 1 %}
 	    	{% endfor %}
 		run_cpu();
+		run_temperature();
 		lan1_ping();
 		lan2_ping();
 		lan3_ping();
@@ -83,6 +89,7 @@ function run()
 	
 
     	}
+
 function run_cpu() 
 	{
 		
@@ -90,13 +97,26 @@ function run_cpu()
 		var democpu = document.getElementById("democpu");
 		var td2 = document.createElement("td");
 		var tr2 = document.createElement("tr");
-		td2.innerHTML = "CPU Utilization rate: "+cpu_items;
+		td2.innerHTML = "CPU rate: "+cpu_items;
 		tr2.appendChild(td2);
 		democpu.appendChild(tr2);
 		
 
 	}
 
+function run_temperature() 
+	{
+		
+		var cpu_items="99";
+		var demotemp = document.getElementById("demotemp");
+		var td3 = document.createElement("td");
+		var tr3 = document.createElement("tr");
+		td3.innerHTML = "temperature: "+cpu_items;
+		tr3.appendChild(td3);
+		demotemp.appendChild(tr3);
+		
+
+	}
 
 function lan1_ping()
 	{//lan1_items

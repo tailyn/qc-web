@@ -107,11 +107,11 @@ function run_cpu()
 function run_temperature() 
 	{
 		
-		var cpu_items="99";
+    var cpu_items="{{cpu_temp[0]}}";
 		var demotemp = document.getElementById("demotemp");
 		var td3 = document.createElement("td");
 		var tr3 = document.createElement("tr");
-		td3.innerHTML = "temperature: "+cpu_items;
+		td3.innerHTML = "temperature: "+cpu_items +"&#8451;";
 		tr3.appendChild(td3);
 		demotemp.appendChild(tr3);
 		

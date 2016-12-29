@@ -24,6 +24,10 @@ def main():
         (out, err) = proc.communicate()
         cpu_items=out.split("\n")
 
+        proc = subprocess.Popen(["cat ./tn-qc/results/CPU/temp.txt", ""], stdout=subprocess.PIPE, shell=True)
+        (out, err) = proc.communicate()
+        cpu_temp=out.split("\n")
+
         proc = subprocess.Popen(["cat ./tn-qc/results/Switch_LAN/lan1result", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         lan1_items=out.split("\n")
@@ -45,6 +49,7 @@ def main():
             'test_items': test_items,
             'state_items': state_items,
 	    'cpu_items': cpu_items,
+	    'cpu_temp': cpu_temp,
 	    'lan1_items': lan1_items,
 	    'lan2_items': lan2_items,
 	    'lan3_items': lan3_items,

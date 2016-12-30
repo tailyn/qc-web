@@ -30,10 +30,11 @@ cat $CONFIG | while read line; do
 		./functions/rtc_test.sh &
 	fi
 	if [[ $line == "Switch_LAN" ]]; then
-		./functions/lan_ping.sh 1 &
-		./functions/lan_ping.sh 2 &
-		./functions/lan_ping.sh 3 &
-		./functions/lan_ping.sh 4 &
+	#	./functions/lan_ping.sh 1 &
+	#	./functions/lan_ping.sh 2 &
+	#	./functions/lan_ping.sh 3 &
+	#	./functions/lan_ping.sh 4 &
+    echo "Failed" > results/Switch_LAN/result.txt
 	fi
 	if [[ $line == "USB" ]]; then
 		./functions/usb_test.sh &
@@ -50,6 +51,9 @@ cat $CONFIG | while read line; do
 	fi
 	if [[ $line == "mPCIE" ]]; then
 		./functions/pcie_test.sh &
+	fi
+	if [[ $line == "SIM_card" ]]; then
+		./functions/sim_test.sh &
 	fi
 	if [[ $line == "CAN_bus" ]]; then
 		./functions/can_test.sh &

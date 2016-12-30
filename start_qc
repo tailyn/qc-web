@@ -3,6 +3,23 @@
 CONFIG=./tn-qc/st7b2.conf
 
 cd tn-qc
+echo "Failed" > results/Bluetooth/result.txt
+echo "Failed" > results/CAN_bus/result.txt
+echo "Failed" > results/CPU/result.txt
+echo "Failed" > results/Ethernet/result.txt
+echo "Failed" > results/GPIO/result.txt
+echo "Failed" > results/I2C1/result.txt
+echo "Failed" > results/LED/result.txt
+echo "Failed" > results/Memory/result.txt
+echo "Failed" > results/mPCIE/result.txt
+echo "Failed" > results/Nand_flash/result.txt
+echo "Failed" > results/RTC/result.txt
+echo "Failed" > results/SD/result.txt
+echo "Failed" > results/SIM_card/result.txt
+echo "Failed" > results/Switch_LAN/result.txt
+echo "Failed" > results/UART/result.txt
+echo "Failed" > results/USB/result.txt
+echo "Failed" > results/Wifi/result.txt
 ./run_qc.sh &
 cd -
 

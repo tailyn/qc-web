@@ -47,7 +47,7 @@ cat $CONFIG | while read line; do
 		./functions/wifi_test.sh &
 	fi
 	if [[ $line == "Bluetooth" ]]; then
-		echo "Failed" > results/Bluetooth/result.txt
+		./functions/bt_test.sh &
 	fi
 	if [[ $line == "mPCIE" ]]; then
 		./functions/pcie_test.sh &

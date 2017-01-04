@@ -11,21 +11,21 @@
 <body class="content" onload="run();">
 	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
 	<h1>
-	<tr><td colspan="6" >ST7b2</td></tr>
+	<tr><td colspan="5" >ST7b2</td></tr>
 	<tr>
-	<td rowspan="4" id="demo"></td>
-	<td rowspan="4" id="demo1"></td>
+	<td rowspan="3" id="demo"></td>
+	<td rowspan="3" id="demo1"></td>
 	<td colspan="2" id="democpu"></td>
 	<td colspan="2" id="demotemp"></td>
 	</tr>
 	<tr>
-	<td id="demolanPort1"  align='center'></td>
-	<td id="demolanPort2"  align='center'></td>
-	<td id="demolanPort3"  align='center'></td>
-	<td id="demolanPort4"  align='center'></td>
+	<td  colspan=2 id="demolanPort1"  align='center'><font color="white">1</font></td>
+	<td  colspan=2 id="demolanPort2"  align='center'><font color="white">2</font></td>
 	</tr>
-	<tr><td colspan="4">image</td></tr>
-	<tr><td colspan="4"><button type="button">I'm Button</button></td></tr>
+    	<tr>                                             
+    	<td  colspan=2 id="demolanPort3"  align='center'><font color="white">3</font></td>
+	<td  colspan=2 id="demolanPort4"  align='center'><font color="white">4</font></td>
+    	</tr>
 	</h1>	
 	</table>
 <script type="text/javascript">
@@ -213,15 +213,15 @@ function lan3_ping()
 		var lan_Port_image_pass = document.createElement("img");
 		var lan_Port_image_No_tested = document.createElement("img");		
 		//fail image
-		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail.gif");
+		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail_2.gif");
 		lan_Port_image_fail.setAttribute("height", "35");
 		lan_Port_image_fail.setAttribute("width", "35");
 		//pass image
-		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass.gif");
+		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass_2.gif");
 		lan_Port_image_pass.setAttribute("height", "35");
 		lan_Port_image_pass.setAttribute("width", "35");
 		//No_tested image
-		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested.gif");
+		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested_2.gif");
 		lan_Port_image_No_tested.setAttribute("height", "35");
 		lan_Port_image_No_tested.setAttribute("width", "35");
 		var i_lan_Port_fail = "Failed";
@@ -257,15 +257,15 @@ function lan4_ping()
 		var lan_Port_image_pass = document.createElement("img");
 		var lan_Port_image_No_tested = document.createElement("img");		
 		//fail image
-		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail.gif");
+		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail_2.gif");
 		lan_Port_image_fail.setAttribute("height", "35");
 		lan_Port_image_fail.setAttribute("width", "35");
 		//pass image
-		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass.gif");
+		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass_2.gif");
 		lan_Port_image_pass.setAttribute("height", "35");
 		lan_Port_image_pass.setAttribute("width", "35");
 		//No_tested image
-		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested.gif");
+		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested_2.gif");
 		lan_Port_image_No_tested.setAttribute("height", "35");
 		lan_Port_image_No_tested.setAttribute("width", "35");
 		var i_lan_Port_fail = "Failed";

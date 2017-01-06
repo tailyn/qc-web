@@ -66,5 +66,10 @@ cat $CONFIG | while read line; do
 	if [[ $line == "GPIO" ]]; then
 		./functions/gpio_test.sh &
 	fi
+
+	if [[ $line == "EEPROM" ]]; then
+		./functions/eeprom_test.sh &
+	fi
+
 	sleep 0.3
 done

@@ -34,6 +34,7 @@ cat $CONFIG | while read line; do
 	  ./functions/lan_ping.sh 2 26 &
 	  ./functions/lan_ping.sh 3 27 &
 	  ./functions/lan_ping.sh 4 28 &
+    ./functions/lan_test.sh &
 	fi
 	if [[ $line == "USB" ]]; then
 		./functions/usb_test.sh &

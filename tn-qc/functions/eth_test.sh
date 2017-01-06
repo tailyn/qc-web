@@ -6,7 +6,7 @@ while [ true ]
 
 do
 
-  ping 8.8.8.8 -c 20 > results/Ethernet/pingwan.log
+  ping 192.168.1.1 -c 20 > results/Ethernet/pingwan.log
 
   if [[ "$(cat results/Ethernet/pingwan.log | grep "20 packets received")" ]]; then
     echo "Pass" > results/Ethernet/result.txt

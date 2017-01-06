@@ -7,7 +7,7 @@ echo "not_tested" > "$Result_PATH"/lan$1result
 
 while [ true ]
 do
-  ping 192.168.30.$2 -c 5 > ping$1.log
+  ping 192.168.30.$2 -c 5 > "$Result_PATH"/ping$1.log
   if [[ "$(cat "$Result_PATH"/ping$1.log | grep "5 packets received")" ]]; then
     echo "Pass" > "$Result_PATH"/lan$1result
     exit

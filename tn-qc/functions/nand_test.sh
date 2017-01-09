@@ -30,7 +30,7 @@ sync
 echo "flash done." >> $logfile
 diff -B -b -i $logfile results/Nand_flash/pass.log > results/Nand_flash/diffresult
 if [[ "$(cat results/Nand_flash/diffresult | grep "flashnand")" ]]; then
-    echo "Failed" > results/Nand_flash/reselt.txt
+    echo "Failed" > results/Nand_flash/result.txt
 else
-    echo "Pass" > results/Nand_flash/reselt.txt
+    echo "Pass" > results/Nand_flash/result.txt
 fi

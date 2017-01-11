@@ -6,6 +6,7 @@ candump can0 > results/CAN_bus/can_bus_rx.log &
 while true; do
 
 if [[ "$(ifconfig | grep "can0")" ]]; then
+	cansend can0 123#DEADBEEF
 	sleep 3
 	if [[ "$(cat results/CAN_bus/can_bus_rx.log | grep "5AA")" ]]; then
                 echo "Pass" > results/CAN_bus/result.txt

@@ -1,20 +1,20 @@
 #!/bin/sh
 
 
-echo 0 > /sys/class/gpio/gpio16/value
-echo 0 > /sys/class/gpio/gpio17/value
+echo 0 > /sys/class/gpio/gpio103/value
+echo 0 > /sys/class/gpio/gpio104/value
 
 if [[ "$1" == "start" ]];then
 		while true
 		do
-			echo 0 > /sys/class/gpio/gpio16/value
+			echo 0 > /sys/class/gpio/gpio103/value
 			sleep 0.2
-			echo 1 > /sys/class/gpio/gpio16/value
+			echo 1 > /sys/class/gpio/gpio103/value
 			sleep 0.2
 		done
 else
 	kill_ps=$(ps aux | grep "led_check" | awk '{print $1}' | head -1)
 	kill -9 $kill_ps
-	echo 1 > /sys/class/gpio/gpio16/value
-	echo 1 > /sys/class/gpio/gpio17/value
+	echo 1 > /sys/class/gpio/gpio104/value
+	echo 1 > /sys/class/gpio/gpio104/value
 fi

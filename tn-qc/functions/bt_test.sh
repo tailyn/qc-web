@@ -1,14 +1,11 @@
 #!/bin/sh
 
-KIM_PATH=/sys/devices/soc0/kim/
-
-uim -f "$KIM_PATH" &
-sleep 0.3
-
-modprobe st_drv
 modprobe btwilink
-sleep 0.2
-
+sleep 1
+uim &
+sleep 10
+hciconfig hci0 up
+sleep 1
 while true; do
 
 if [[ "$(hciconfig | grep "hci")" ]]; then

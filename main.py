@@ -123,7 +123,7 @@ def mac():
         proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_eth1", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_eth1_items=out.split("\n")
-	 proc = subprocess.Popen(["cat ./tn-qc/results/id.txt", ""], stdout=subprocess.PIPE, shell=True)
+	proc = subprocess.Popen(["cat ./tn-qc/results/id.txt", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         i_cpu_id=out.split("\n")
 

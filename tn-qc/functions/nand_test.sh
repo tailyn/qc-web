@@ -19,7 +19,7 @@ nandwrite -p /dev/mtd0 /root/qc-web/tn-image/MLO >> $logfile
 nandwrite -p /dev/mtd1 /root/qc-web/tn-image/MLO >> $logfile
 nandwrite -p /dev/mtd2 /root/qc-web/tn-image/MLO >> $logfile
 nandwrite -p /dev/mtd3 /root/qc-web/tn-image/MLO >> $logfile
-nandwrite -p /dev/mtd4 /root/qc-web/tn-image/am335x-st7b2.dtb >> $logfile
+nandwrite -p /dev/mtd4 /root/qc-web/tn-image/am335x-nutsboard-almond.dtb >> $logfile
 nandwrite -p /dev/mtd5 /root/qc-web/tn-image/u-boot.img >> $logfile
 nandwrite -p /dev/mtd6 /root/qc-web/tn-image/uEnv.txt >> $logfile
 nandwrite -p /dev/mtd7 /root/qc-web/tn-image/uEnv.txt >> $logfile

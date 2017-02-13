@@ -6,10 +6,8 @@ candump can0 > results/CAN_bus/can_bus.log &
 while true;do
 
 if [[ "$(cat results/CAN_bus/can_bus.log | grep "DE AD BE EF")" ]]; then
+  > results/CAN_bus/can_bus.log
   cansend can0 5AA#
-
 fi
-> results/CAN_bus/can_bus.log
-sleep 2
-
+sleep 1
 done

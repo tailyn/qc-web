@@ -20,7 +20,9 @@ echo "Failed" > results/Switch_LAN/result.txt
 echo "Failed" > results/UART/result.txt
 echo "Failed" > results/USB/result.txt
 echo "Failed" > results/Wifi/result.txt
+rm results/MACs/*
 ./run_qc.sh &
+./functions/getmac.sh &
 cd -
 
 while true; do

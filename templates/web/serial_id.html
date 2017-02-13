@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+ 	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       	<title>QC-WEB-Serial ID</title>  
+	</head> 
+	<body class="content" onload="run();">
+
+	<form name="clock" action="/serial_id" method="POST" >
+	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
+	<tr>                                             
+    	<td>CPU ID：<input type="text" name="cpu_id" id="input_id" onKeyPress="return FormEnterKey(event)"  maxlength="9" size="9" value="" align="center" ></td>
+    	</tr>
+	<!--<tr>                                             
+    	<td>Backplane ID：<input type="text" name="backplane_id" onKeyPress="return FormEnterKey(event)" maxlength="9" size="9" value="" align="center"></td>
+    	</tr>-->
+	<tr>                                             
+    	<td  id="demoeth0"></td>
+    	</tr>	
+	<tr>                                             
+    	<td  id="demoeth1"></td>
+    	</tr>
+	<tr>                                             
+    	<td  id="demowlan0"></td>
+    	</tr>
+	<tr>                                             
+    	<td  id="demobt"></td>
+    	</tr>
+
+	<tr style="display: none;">
+	<td><input type="hidden" name="mac1_id" value="{{mac1_id[0]}}"></td>
+	</tr>
+
+	<tr style="display: none;">
+	<td><input type="hidden" name="mac2_id"  value="{{mac2_id[0]}}"></td>
+	</tr>
+
+	<tr style="display: none;">
+	<td><input type="hidden" name="mac3_id"  value="{{mac3_id[0]}}"></td>
+	</tr>
+
+	<tr style="display: none;">
+	<td><input type="hidden" name="mac4_id"  value="{{mac4_id[0]}}"></td>
+	</tr>
+	<tr>
+	<td><input type="submit" name="submit" class ="btn-danger" align="center" value="Aply" onclick="return text();"></td>
+	</tr>
+	</table>
+	</form>
+	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="20">
+	<form name="clock_1" action="/upload/{{i_cpu_id[0]}}.csv" method="POST" >
+	<td><input type="submit" name="submit" id="321" class ="btn-danger" align="center" value="Download"></td>
+	</form>
+	</table>
+
+
+<script type="text/javascript">
+function FormEnterKey(e) {
+     var key;
+     if(window.event)
+          key = window.event.keyCode;
+     else
+          key = e.which;
+     return (key != 13);
+}
+function ItmKeyDown(OrgItemId,TargetItemId)
+        {
+            var orgItm = window.document.getElementById(OrgItemId);
+            var targetItm = window.document.getElementById(TargetItemId);
+            if(window.event.keyCode==13)
+            {
+                targetItm.focus();
+                return false;
+            }
+        }
+function run()
+	{
+		eth0_mac(); 
+		eth1_mac(); 
+		wlan0_mac(); 
+		bt_mac();
+	}
+function eth0_mac() 
+	{
+		
+    		var eth0_mac="{{mac_eth0_items[0]}}";
+		var demoeth0 = document.getElementById("demoeth0");
+		var tdeth0 = document.createElement("td");
+		var treth0 = document.createElement("tr");
+		tdeth0.innerHTML = "MAC 1:  "+eth0_mac;
+		treth0.appendChild(tdeth0);
+		demoeth0.appendChild(treth0);
+		
+	}
+function eth1_mac() 
+	{
+		
+    		var eth1_mac="{{mac_eth1_items[0]}}";
+		var demoeth1 = document.getElementById("demoeth1");
+		var tdeth1 = document.createElement("td");
+		var treth1 = document.createElement("tr");
+		tdeth1.innerHTML = "MAC 2:  "+eth1_mac;
+		treth1.appendChild(tdeth1);
+		demoeth1.appendChild(treth1);
+		
+	}
+function wlan0_mac() 
+	{
+		
+    		var wlan0_mac="{{mac_wlan0_items[0]}}";
+		var demowlan0 = document.getElementById("demowlan0");
+		var tdwlan0 = document.createElement("td");
+		var trwlan0 = document.createElement("tr");
+		tdwlan0.innerHTML = "MAC 3:  "+wlan0_mac;
+		trwlan0.appendChild(tdwlan0);
+		demowlan0.appendChild(trwlan0);
+		
+	}
+function bt_mac() 
+	{
+		
+    		var bt_mac="{{mac_bt_items[0]}}";
+		var demobt = document.getElementById("demobt");
+		var tdbt = document.createElement("td");
+		var trbt = document.createElement("tr");
+		tdbt.innerHTML = "MAC 4:  "+bt_mac;
+		trbt.appendChild(tdbt);
+		demobt.appendChild(trbt);
+		
+		
+	}  
+</script>
+</body>
+
+</html>

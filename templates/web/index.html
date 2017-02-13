@@ -8,13 +8,15 @@
        <!--<link href="/status/css/style.css" rel="stylesheet" type="text/css" />-->
        <script src="static/js/myScript.js"></script>   
   </head> 
+
+    </section>
 <body class="content" onload="run();">
 	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
 	<h1>
-	<tr><td colspan="5" >Nutsboard</td></tr>
+	<tr><td colspan="5" >Nutsboard <a target="new" href="/serial_id">Serial ID</a></td></tr>
 	<tr>
-	<td rowspan="3" id="demo"></td>
-	<td rowspan="3" id="demo1"></td>
+	<td rowspan="7" id="demo"></td>
+	<td rowspan="7" id="demo1"></td>
 	<td colspan="2" id="democpu"></td>
 	<td colspan="2" id="demotemp"></td>
 	</tr>
@@ -28,6 +30,20 @@
     	</tr>
 	</h1>	
 	</table>
+	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
+	<tr>
+        <td  id="demoeth0"></td>
+        </tr>
+        <tr>
+        <td  id="demoeth1"></td>
+        </tr>
+        <tr>
+        <td id="demowlan0"></td>
+        </tr>
+        <tr>
+        <td  id="demobt"></td>
+        </tr>
+        </table>
 <script type="text/javascript">
  
 function run() 
@@ -85,14 +101,17 @@ function run()
 		lan1_ping();
 		lan2_ping();
 		lan3_ping();
-		lan4_ping(); 
+		lan4_ping();
+		eth0_mac();
+		eth1_mac();
+		wlan0_mac();
+		bt_mac();
 	
 
     	}
 
 function run_cpu() 
 	{
-		
 		var cpu_items="{{cpu_items[0]}}";
 		var democpu = document.getElementById("democpu");
 		var td2 = document.createElement("td");
@@ -100,22 +119,17 @@ function run_cpu()
 		td2.innerHTML = "CPU rate: "+cpu_items;
 		tr2.appendChild(td2);
 		democpu.appendChild(tr2);
-		
-
 	}
 
 function run_temperature() 
 	{
-		
-    var cpu_items="{{cpu_temp[0]}}";
+		var cpu_temp="{{cpu_temp[0]}}";
 		var demotemp = document.getElementById("demotemp");
 		var td3 = document.createElement("td");
 		var tr3 = document.createElement("tr");
-		td3.innerHTML = "temperature: "+cpu_items +"&#8451;";
+		td3.innerHTML = "temperature: "+cpu_temp +"&#8451;";
 		tr3.appendChild(td3);
 		demotemp.appendChild(tr3);
-		
-
 	}
 
 function lan1_ping()
@@ -293,7 +307,47 @@ function lan4_ping()
 			tr4_lanPort4.appendChild(lan_Port_image_No_tested);
 			demolanPort4.appendChild(tr4_lanPort4);
 		}
-	}	    
+	}
+function eth0_mac()
+	{
+               var eth0_mac="{{mac_eth0_items[0]}}";
+		var demoeth0 = document.getElementById("demoeth0");
+		var tdeth0 = document.createElement("td");
+		var treth0 = document.createElement("tr");
+		tdeth0.innerHTML = "MAC 1:  "+eth0_mac;
+		treth0.appendChild(tdeth0);
+		demoeth0.appendChild(treth0);
+	}
+function eth1_mac()
+	{
+                var eth1_mac="{{mac_eth1_items[0]}}";
+		var demoeth1 = document.getElementById("demoeth1");
+		var tdeth1 = document.createElement("td");
+		var treth1 = document.createElement("tr");
+		tdeth1.innerHTML = "MAC 2:  "+eth1_mac;
+		treth1.appendChild(tdeth1);
+		demoeth1.appendChild(treth1);
+	}
+function wlan0_mac()
+	{
+                var wlan0_mac="{{mac_wlan0_items[0]}}";
+		var demowlan0 = document.getElementById("demowlan0");
+		var tdwlan0 = document.createElement("td");
+		var trwlan0 = document.createElement("tr");
+		tdwlan0.innerHTML = "MAC 3:  "+wlan0_mac;
+		trwlan0.appendChild(tdwlan0);
+		demowlan0.appendChild(trwlan0);
+	}
+function bt_mac()
+	{
+                var bt_mac="{{mac_bt_items[0]}}";
+		var demobt = document.getElementById("demobt");
+		var tdbt = document.createElement("td");
+		var trbt = document.createElement("tr");
+		tdbt.innerHTML = "MAC 4:  "+bt_mac;
+		trbt.appendChild(tdbt);
+		demobt.appendChild(trbt);
+        }
 </script>
 </body>
 

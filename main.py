@@ -45,19 +45,19 @@ def main():
         (out, err) = proc.communicate()
         lan4_items=out.split("\n")
 
-	proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_bt", ""], stdout=subprocess.PIPE, shell=True)
+	proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_BT", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_bt_items=out.split("\n")
 
-        proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_wlan0", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_wlan0", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_wlan0_items=out.split("\n")
 
-        proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_eth0", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_eth0", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_eth0_items=out.split("\n")
 
-        proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_eth1", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_eth1", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_eth1_items=out.split("\n")
 
@@ -111,16 +111,16 @@ def mac():
 
 		file.close()
 
-        proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_bt", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_BT", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_bt_items=out.split("\n")
-        proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_wlan0", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_wlan0", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_wlan0_items=out.split("\n")
-        proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_eth0", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_eth0", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_eth0_items=out.split("\n")
-        proc = subprocess.Popen(["cat ./tn-qc/results/getmac/mac_eth1", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_eth1", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         mac_eth1_items=out.split("\n")
 	proc = subprocess.Popen(["cat ./tn-qc/results/id.txt", ""], stdout=subprocess.PIPE, shell=True)

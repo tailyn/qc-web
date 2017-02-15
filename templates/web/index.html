@@ -13,7 +13,8 @@
 <body class="content" onload="run();">
 	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
 	<h1>
-	<tr><td colspan="5" >Nutsboard <a target="new" href="/serial_id">Serial ID</a></td></tr>
+	<!--<tr><td colspan="5" >Nutsboard <a target="new" href="/serial_id">Serial ID</a></td></tr>-->
+	<tr><td colspan="5" >Nutsboard <a target="new" href="/serial_id"><div id="myDIV"></div></a></td></tr>
 	<tr>
 	<td rowspan="7" id="demo"></td>
 	<td rowspan="7" id="demo1"></td>
@@ -106,10 +107,26 @@ function run()
 		eth1_mac();
 		wlan0_mac();
 		bt_mac();
+                link_id_page();
 	
 
     	}
-
+function link_id_page() {
+                   var para = document.createElement("P");
+                   var all_pass_link = "{{all_pass_link_id[0]}}";
+                   var check_pass="all_pass";
+                     if (all_pass_link == check_pass)
+			{
+				var t = document.createTextNode("Serial ID");
+                                para.appendChild(t);
+                                document.getElementById("myDIV").appendChild(para);
+			}
+                     else{
+                                var t = document.createTextNode("");
+                                para.appendChild(t);
+                                document.getElementById("myDIV").appendChild(para);
+                         }
+}
 function run_cpu() 
 	{
 		var cpu_items="{{cpu_items[0]}}";

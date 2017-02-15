@@ -61,6 +61,9 @@ def main():
         (out, err) = proc.communicate()
         mac_eth1_items=out.split("\n")
 
+        proc = subprocess.Popen(["cat ./tn-qc/all_pass", ""], stdout=subprocess.PIPE, shell=True)
+        (out, err) = proc.communicate()
+        all_pass_link_id=out.split("\n")
 
 	templateData = {
             'test_items': test_items,
@@ -75,6 +78,7 @@ def main():
             'mac_wlan0_items': mac_wlan0_items,
             'mac_eth0_items': mac_eth0_items,
             'mac_eth1_items': mac_eth1_items,
+            'all_pass_link_id': all_pass_link_id,
 
 	}
 

@@ -17,6 +17,6 @@ else
 	echo "Failed" > results/CAN_bus/result.txt
 fi
 
-sleep 1
+sleep 5
 
 done

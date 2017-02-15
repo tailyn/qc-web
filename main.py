@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/")
 def main():
 
-	proc = subprocess.Popen(["cat ./tn-qc/st7b2.conf;", ""], stdout=subprocess.PIPE, shell=True)
+	proc = subprocess.Popen(["cat ./tn-qc/st7b2_tmp.conf", ""], stdout=subprocess.PIPE, shell=True)
 	(out, err) = proc.communicate()
 	test_items=out.split("\n")
 

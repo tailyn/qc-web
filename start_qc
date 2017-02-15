@@ -1,8 +1,16 @@
 #!/bin/sh
 
-CONFIG=./tn-qc/st7b2.conf
+WIFI_HAS=$(cat  /sys/bus/sdio/devices/mmc1\:0001\:1/vendor)
+if [[ "$WIFI_HAS" == "0x0097" ]]; then
+	CONFIG=./tn-qc/st7b2.conf
+else
+	CONFIG=./tn-qc/st7b2_nw.conf
+fi
+rm ./tn-qc/st7b2_tmp.conf
+cp "$CONFIG" ./tn-qc/st7b2_tmp.conf
 
 cd tn-qc
+echo "" > all_pass 
 echo "Failed" > results/Bluetooth/result.txt
 echo "Failed" > results/CAN_bus/result.txt
 echo "Failed" > results/CPU/result.txt
@@ -20,16 +28,26 @@ echo "Failed" > results/Switch_LAN/result.txt
 echo "Failed" > results/UART/result.txt
 echo "Failed" > results/USB/result.txt
 echo "Failed" > results/Wifi/result.txt
+echo "Failed" > results/EEPROM/result.txt
+echo "Failed" > results/TEMP/result.txt
 rm results/MACs/*
 ./run_qc.sh &
 ./functions/getmac.sh &
 cd -
 
 while true; do
-	
 	cat $CONFIG | while read line; do
 		cat tn-qc/results/$line/result.txt >> tn-qc/result_temp
 	done
 	cp tn-qc/result_temp tn-qc/result_final
 	rm tn-qc/result_temp
+	all_pass=$(cat ./tn-qc/result_final | grep "Failed")
+
+	if [[ "$all_pass" == "" ]]; then                                 
+        	echo "all_pass" > ./tn-qc/all_pass
+	else                                                                   
+        	echo "" > ./tn-qc/all_pass
+	fi                                
+
+	sleep 1
 done

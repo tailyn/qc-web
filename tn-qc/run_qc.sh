@@ -3,7 +3,12 @@
 # Author: Wig
 # Only for ARM base platform
 
-CONFIG=st7b2.conf
+WIFI_HAS=$(cat  /sys/bus/sdio/devices/mmc1\:0001\:1/vendor)
+if [[ "$WIFI_HAS" == "0x0097" ]]; then
+        CONFIG=st7b2.conf
+else
+        CONFIG=st7b2_nw.conf
+fi
 
 
 cat $CONFIG | while read line; do

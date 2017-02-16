@@ -115,11 +115,27 @@ function link_id_page() {
                    var para = document.createElement("P");
                    var all_pass_link = "{{all_pass_link_id[0]}}";
                    var check_pass="all_pass";
+                   var i_lan_Port_fail = "Failed";
+                   var i_lan_Port_pass = "Pass";
+		   var i_lan_Port_No_testde = "not_tested";
+                   var lan1port_items="{{lan1_items[0]}}";
+                   var lan2port_items="{{lan2_items[0]}}";
+                   var lan3port_items="{{lan3_items[0]}}";
+                   var lan4port_items="{{lan4_items[0]}}";
                      if (all_pass_link == check_pass)
 			{
-				var t = document.createTextNode("Serial ID");
-                                para.appendChild(t);
-                                document.getElementById("myDIV").appendChild(para);
+			        if(((lan1port_items == i_lan_Port_pass)&&(lan2port_items == i_lan_Port_pass)&&(lan3port_items == i_lan_Port_pass)&&(lan4port_items == i_lan_Port_pass)))
+                                {
+				     var t = document.createTextNode("Serial ID");
+                                     para.appendChild(t);
+                                     document.getElementById("myDIV").appendChild(para);
+                                }
+                                else
+                                {
+                                     var t = document.createTextNode("");
+                                     para.appendChild(t);
+                                     document.getElementById("myDIV").appendChild(para);
+                                }
 			}
                      else{
                                 var t = document.createTextNode("");

@@ -13,7 +13,16 @@ app = Flask(__name__)
 @app.route("/")
 def main():
 
-	proc = subprocess.Popen(["cat ./tn-qc/st7b2_tmp.conf", ""], stdout=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(["cat ./test_mode", ""], stdout=subprocess.PIPE, shell=True)
+        (out, err) = proc.communicate()
+        out=out.split("\n")
+
+	if out[0] == 'burn_mode':
+		page='web/burn.html'
+	else:
+		page='web/index.html'
+
+	proc = subprocess.Popen(["cat ./tn-qc/bf8a1_tmp.conf", ""], stdout=subprocess.PIPE, shell=True)
 	(out, err) = proc.communicate()
 	test_items=out.split("\n")
 
@@ -28,22 +37,6 @@ def main():
         proc = subprocess.Popen(["cat ./tn-qc/results/CPU/temp.txt", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         cpu_temp=out.split("\n")
-
-        proc = subprocess.Popen(["cat ./tn-qc/results/Switch_LAN/lan1result", ""], stdout=subprocess.PIPE, shell=True)
-        (out, err) = proc.communicate()
-        lan1_items=out.split("\n")
-
-        proc = subprocess.Popen(["cat ./tn-qc/results/Switch_LAN/lan2result", ""], stdout=subprocess.PIPE, shell=True)
-        (out, err) = proc.communicate()
-        lan2_items=out.split("\n")
-
-        proc = subprocess.Popen(["cat ./tn-qc/results/Switch_LAN/lan3result", ""], stdout=subprocess.PIPE, shell=True)
-        (out, err) = proc.communicate()
-        lan3_items=out.split("\n")
-
-        proc = subprocess.Popen(["cat ./tn-qc/results/Switch_LAN/lan4result", ""], stdout=subprocess.PIPE, shell=True)
-        (out, err) = proc.communicate()
-        lan4_items=out.split("\n")
 
 	proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_BT", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
@@ -70,10 +63,6 @@ def main():
             'state_items': state_items,
 	    'cpu_items': cpu_items,
 	    'cpu_temp': cpu_temp,
-	    'lan1_items': lan1_items,
-	    'lan2_items': lan2_items,
-	    'lan3_items': lan3_items,
-	    'lan4_items': lan4_items,
 	    'mac_bt_items': mac_bt_items,
             'mac_wlan0_items': mac_wlan0_items,
             'mac_eth0_items': mac_eth0_items,
@@ -82,7 +71,7 @@ def main():
 
 	}
 
-	return render_template('web/index.html', **templateData)
+	return render_template(page, **templateData)
 
 
 @app.route("/serial_id",methods=['GET' , 'POST'])
@@ -90,7 +79,7 @@ def mac():
 
 	if request.method == 'POST':
 		p_cpu_id=request.form['cpu_id']
-		#p_backplane_id=request.form['backplane_id']
+		p_mac1_input_id=request.form['mac1_input_id']
 		p_mac1_id=request.form['mac1_id']
 		p_mac2_id=request.form['mac2_id']
 		p_mac3_id=request.form['mac3_id']
@@ -107,13 +96,16 @@ def mac():
 
 		name_of_file = p_cpu_id
 
-		completeName = os.path.join(save_path, name_of_file+".csv")
+		completeName = os.path.join(save_path, "id_mac.csv")
 
 		file = open(completeName, "w")
 
-		file.write(p_cpu_id + "," + p_mac1_id + "," + p_mac2_id + "," + p_mac3_id + "," + p_mac4_id)
+		file.write(p_cpu_id + "," + p_mac1_input_id)
 
 		file.close()
+
+ 		proc = subprocess.Popen(["./tn-qc/functions/burn_mac", ""], stdout=subprocess.PIPE, shell=True)
+        	(out, err) = proc.communicate()
 
         proc = subprocess.Popen(["cat ./tn-qc/results/MACs/mac_BT", ""], stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()

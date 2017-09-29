@@ -1,13 +1,20 @@
 #!/bin/sh
 
-WIFI_HAS=$(cat  /sys/bus/sdio/devices/mmc1\:0001\:1/vendor)
-if [[ "$WIFI_HAS" == "0x0097" ]]; then
-	CONFIG=./tn-qc/st7b2.conf
+CONFIG=./tn-qc/bf8a1.conf
+rm ./tn-qc/bf8a1_tmp.conf
+cp "$CONFIG" ./tn-qc/bf8a1_tmp.conf
+
+mac1=$(cat /sys/fsl_otp/HW_OCOTP_MAC1)
+mac0=$(cat /sys/fsl_otp/HW_OCOTP_MAC0)
+
+if [[ "$mac0" == "0x0" ]]; then
+	if [[ "$mac1" == "0x0" ]]; then
+                echo "burn_mode" > ./test_mode
+		exit 0
+        fi
 else
-	CONFIG=./tn-qc/st7b2_nw.conf
+	echo "normal_mode" > ./test_mode
 fi
-rm ./tn-qc/st7b2_tmp.conf
-cp "$CONFIG" ./tn-qc/st7b2_tmp.conf
 
 cd tn-qc
 echo "" > all_pass 
@@ -16,20 +23,25 @@ echo "Failed" > results/CAN_bus/result.txt
 echo "Failed" > results/CPU/result.txt
 echo "Failed" > results/Ethernet/result.txt
 echo "Failed" > results/GPIO/result.txt
-echo "Failed" > results/I2C1/result.txt
-echo "Failed" > results/LED/result.txt
+echo "Failed" > results/I2C/result.txt
 echo "Failed" > results/Memory/result.txt
 echo "Failed" > results/mPCIE/result.txt
-echo "Failed" > results/Nand_flash/result.txt
 echo "Failed" > results/RTC/result.txt
 echo "Failed" > results/SD/result.txt
 echo "Failed" > results/SIM_card/result.txt
-echo "Failed" > results/Switch_LAN/result.txt
-echo "Failed" > results/UART/result.txt
+echo "Failed" > results/UART1/result.txt
 echo "Failed" > results/USB/result.txt
 echo "Failed" > results/Wifi/result.txt
-echo "Failed" > results/EEPROM/result.txt
-echo "Failed" > results/TEMP/result.txt
+echo "Failed" > results/AUDIO/result.txt
+echo "Failed" > results/LVDS/result.txt
+echo "Failed" > results/UART23/result.txt
+echo "Failed" > results/SATA/result.txt
+echo "Failed" > results/TOUCH/result.txt
+echo "Failed" > results/UART4/result.txt
+echo "Failed" > results/eFUSE/result.txt
+echo "Failed" > results/eMMC/result.txt
+echo "Failed" > results/PWM/result.txt
+echo "Failed" > results/VGA/result.txt
 rm results/MACs/*
 ./run_qc.sh &
 ./functions/getmac.sh &

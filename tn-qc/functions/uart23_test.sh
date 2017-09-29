@@ -2,24 +2,23 @@
 
 while true; do
 
-cat /dev/ttyO2 > uart23_stat &
+cat /dev/ttymxc1 > /root/qc-web/tn-qc/results/UART23/uart23_stat &
 sleep 0.5
-echo "123" > /dev/ttyO1
+echo "123" > /dev/ttymxc2
+sleep 0.5
 
-uart_res=$(head -1 uart23_stat)
+uart_res=$(head -1 /root/qc-web/tn-qc/results/UART23/uart23_stat)
+sleep 0.5
 
 if [[ "$uart_res" == "123" ]]; then
-	echo "Pass" > /root/qc-web/tn-qc/results/UART/result.txt
+	echo "Pass" > /root/qc-web/tn-qc/results/UART23/result.txt
 else
-	echo "Failed" > /root/qc-web/tn-qc/results/UART/result.txt
+	echo "Failed" > /root/qc-web/tn-qc/results/UART23/result.txt
 fi
 
-rm uart23_stat
+rm /root/qc-web/tn-qc/results/UART23/uart23_stat
+ps_id=$(ps aux | grep "ttymxc1" | head -1 | awk '{print $2}')
+kill -9 $ps_id
 
-ps aux | grep "ttyO2" | awk '{print $1}' > uart23_stat
-ps_filter=$(head -1 uart23_stat)
-kill -9 $ps_filter
-rm uart23_stat
-
-sleep 20
+sleep 10
 done

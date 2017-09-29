@@ -3,8 +3,8 @@
 while true; do
 
 if [[ "$(cat /proc/cpuinfo)" ]]; then
-	cpu_usage=$(top -bn1 | grep "CPU:" | awk '{print $2}' | head -1)
-	cpu_temp=$(cat /sys/class/hwmon/hwmon0/device/temp1_input | sed 's/...$//')
+	cpu_usage=$(mpstat | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12}')
+	cpu_temp=$((`cat /sys/class/thermal/thermal_zone0/temp`/1000))
 	echo "Pass" > results/CPU/result.txt
 	echo $cpu_usage > results/CPU/usage.txt
  	echo $cpu_temp > results/CPU/temp.txt

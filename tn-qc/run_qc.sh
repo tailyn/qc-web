@@ -3,13 +3,7 @@
 # Author: Wig
 # Only for ARM base platform
 
-WIFI_HAS=$(cat  /sys/bus/sdio/devices/mmc1\:0001\:1/vendor)
-if [[ "$WIFI_HAS" == "0x0097" ]]; then
-        CONFIG=st7b2.conf
-else
-        CONFIG=st7b2_nw.conf
-fi
-
+CONFIG=bf8a1.conf
 
 cat $CONFIG | while read line; do
 	if [[ $line == "CPU" ]]; then
@@ -22,24 +16,23 @@ cat $CONFIG | while read line; do
 	if [[ $line == "SD" ]]; then
 		./functions/sd_test.sh &
 	fi
-	if [[ $line == "Nand_flash" ]]; then
-		./functions/nand_test.sh &
+	if [[ $line == "eMMC" ]]; then
+		./functions/emmc_test.sh &
 	fi
-	if [[ $line == "I2C1" ]]; then
+	if [[ $line == "I2C" ]]; then
 		./functions/i2c_test.sh &
 	fi
-	if [[ $line == "UART" ]]; then
-		./functions/uart23_test.sh &
+	if [[ $line == "UART1" ]]; then
+		./functions/uart1_test.sh &
 	fi
+        if [[ $line == "UART23" ]]; then 
+                ./functions/uart23_test.sh &
+        fi 
+        if [[ $line == "UART4" ]]; then     
+        	./functions/uart4_test.sh &
+	fi 
 	if [[ $line == "RTC" ]]; then
 		./functions/rtc_test.sh &
-	fi
-	if [[ $line == "Switch_LAN" ]]; then
-	  ./functions/lan_ping.sh 1 25 &
-	  ./functions/lan_ping.sh 2 26 &
-	  ./functions/lan_ping.sh 3 27 &
-	  ./functions/lan_ping.sh 4 28 &
-    ./functions/lan_test.sh &
 	fi
 	if [[ $line == "USB" ]]; then
 		./functions/usb_test.sh &
@@ -47,7 +40,6 @@ cat $CONFIG | while read line; do
 	if [[ $line == "Ethernet" ]]; then
 		./functions/eth_test.sh &
 	fi
-
 	if [[ $line == "Wifi" ]]; then
 		./functions/wifi_test.sh &
 	fi
@@ -64,17 +56,28 @@ cat $CONFIG | while read line; do
 		./functions/can_test.sh &
 	fi
 
-	if [[ $line == "LED" ]]; then
-		./functions/led_test.sh &
-	fi
-
 	if [[ $line == "GPIO" ]]; then
-		./functions/gpio_test.sh &
+		./functions/gpio_test.sh &	
 	fi
 
-	if [[ $line == "EEPROM" ]]; then
-		./functions/eeprom_test.sh &
+	if [[ $line == "eFUSE" ]]; then
+		./functions/efuse_test.sh &
 	fi
+
+        if [[ $line == "VGA" ]]; then     
+		./functions/vga_test.sh &
+        fi
+
+        if [[ $line == "SATA" ]]; then     
+                ./functions/sata_test.sh & 
+        fi
+
+        if [[ $line == "TOUCH" ]]; then 
+                ./functions/touch_test.sh &     
+        fi
+	if [[ $line == "AUDIO" ]]; then     
+                ./functions/audio_test.sh &
+        fi
 
 	sleep 0.3
 done

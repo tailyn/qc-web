@@ -1,0 +1,21 @@
+
+FATAL: failed to add I/O device: Filedes is not a tty
+picocom v2.1
+
+port is        : /dev/ttymxc2
+flowcontrol    : RTS/CTS
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+

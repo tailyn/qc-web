@@ -11,7 +11,7 @@
 
     </section>
 <body class="content" onload="run();">
-	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
+	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="500">
 	<h1>
 	<!--<tr><td colspan="5" >Nutsboard <a target="new" href="/serial_id">Serial ID</a></td></tr>-->
 	<tr><td colspan="5" >Nutsboard <a target="new" href="/serial_id"><div id="myDIV"></div></a></td></tr>
@@ -99,50 +99,12 @@ function run()
 	    	{% endfor %}
 		run_cpu();
 		run_temperature();
-		lan1_ping();
-		lan2_ping();
-		lan3_ping();
-		lan4_ping();
 		eth0_mac();
 		eth1_mac();
 		wlan0_mac();
 		bt_mac();
-                link_id_page();
-	
 
     	}
-function link_id_page() {
-                   var para = document.createElement("P");
-                   var all_pass_link = "{{all_pass_link_id[0]}}";
-                   var check_pass="all_pass";
-                   var i_lan_Port_fail = "Failed";
-                   var i_lan_Port_pass = "Pass";
-		   var i_lan_Port_No_testde = "not_tested";
-                   var lan1port_items="{{lan1_items[0]}}";
-                   var lan2port_items="{{lan2_items[0]}}";
-                   var lan3port_items="{{lan3_items[0]}}";
-                   var lan4port_items="{{lan4_items[0]}}";
-                     if (all_pass_link == check_pass)
-			{
-			        if(((lan1port_items == i_lan_Port_pass)&&(lan2port_items == i_lan_Port_pass)&&(lan3port_items == i_lan_Port_pass)&&(lan4port_items == i_lan_Port_pass)))
-                                {
-				     var t = document.createTextNode("Serial ID");
-                                     para.appendChild(t);
-                                     document.getElementById("myDIV").appendChild(para);
-                                }
-                                else
-                                {
-                                     var t = document.createTextNode("");
-                                     para.appendChild(t);
-                                     document.getElementById("myDIV").appendChild(para);
-                                }
-			}
-                     else{
-                                var t = document.createTextNode("");
-                                para.appendChild(t);
-                                document.getElementById("myDIV").appendChild(para);
-                         }
-}
 function run_cpu() 
 	{
 		var cpu_items="{{cpu_items[0]}}";
@@ -163,183 +125,6 @@ function run_temperature()
 		td3.innerHTML = "temperature: "+cpu_temp +"&#8451;";
 		tr3.appendChild(td3);
 		demotemp.appendChild(tr3);
-	}
-
-function lan1_ping()
-	{//lan1_items
-		
-		var lan_Port_image_fail = document.createElement("img");
-		var lan_Port_image_pass = document.createElement("img");
-		var lan_Port_image_No_tested = document.createElement("img");		
-		//fail image
-		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail.gif");
-		lan_Port_image_fail.setAttribute("height", "35");
-		lan_Port_image_fail.setAttribute("width", "35");
-		//pass image
-		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass.gif");
-		lan_Port_image_pass.setAttribute("height", "35");
-		lan_Port_image_pass.setAttribute("width", "35");
-		//No_tested image
-		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested.gif");
-		lan_Port_image_No_tested.setAttribute("height", "35");
-		lan_Port_image_No_tested.setAttribute("width", "35");
-		var i_lan_Port_fail = "Failed";
-		var i_lan_Port_pass = "Pass";
-		var i_lan_Port_No_testde = "not_tested";
-
-		var lan1port_items="{{lan1_items[0]}}";
-		var demolanPort1 = document.getElementById("demolanPort1");
-		var td1_lanPort1 = document.createElement("td");
-		var tr1_lanPort1 = document.createElement("tr");
-		if (i_lan_Port_pass == lan1port_items )
-		{
-			tr1_lanPort1.appendChild(lan_Port_image_pass);
-			demolanPort1.appendChild(tr1_lanPort1);
-		}
-		else if (i_lan_Port_fail == lan1port_items)
-		{
-			tr1_lanPort1.appendChild(lan_Port_image_fail);
-			demolanPort1.appendChild(tr1_lanPort1);	
-		
-		}
-		else
-		{
-			tr1_lanPort1.appendChild(lan_Port_image_No_tested);
-			demolanPort1.appendChild(tr1_lanPort1);
-		}
-	}
-
-function lan2_ping()
-	{//lan2_items
-		var lan_Port_image_fail = document.createElement("img");
-		var lan_Port_image_pass = document.createElement("img");
-		var lan_Port_image_No_tested = document.createElement("img");		
-		//fail image
-		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail.gif");
-		lan_Port_image_fail.setAttribute("height", "35");
-		lan_Port_image_fail.setAttribute("width", "35");
-		//pass image
-		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass.gif");
-		lan_Port_image_pass.setAttribute("height", "35");
-		lan_Port_image_pass.setAttribute("width", "35");
-		//No_tested image
-		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested.gif");
-		lan_Port_image_No_tested.setAttribute("height", "35");
-		lan_Port_image_No_tested.setAttribute("width", "35");
-		var i_lan_Port_fail = "Failed";
-		var i_lan_Port_pass = "Pass";
-		var i_lan_Port_No_testde = "not_tested";
-		
-
-		var lan2port_items="{{lan2_items[0]}}";
-		var demolanPort2 = document.getElementById("demolanPort2");
-		var td2_lanPort2 = document.createElement("td");
-		var tr2_lanPort2 = document.createElement("tr");
-		//alert(lan2port_items);
-		if (i_lan_Port_pass == lan2port_items )
-		{
-			tr2_lanPort2.appendChild(lan_Port_image_pass);
-			demolanPort2.appendChild(tr2_lanPort2);
-		}
-		else if (i_lan_Port_fail == lan2port_items)
-		{
-			tr2_lanPort2.appendChild(lan_Port_image_fail);
-			demolanPort2.appendChild(tr2_lanPort2);	
-		
-		}
-		else
-		{
-			tr2_lanPort2.appendChild(lan_Port_image_No_tested);
-			demolanPort2.appendChild(tr2_lanPort2);
-		}
-	}
-
-function lan3_ping()
-	{//lan3_items
-		var lan_Port_image_fail = document.createElement("img");
-		var lan_Port_image_pass = document.createElement("img");
-		var lan_Port_image_No_tested = document.createElement("img");		
-		//fail image
-		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail_2.gif");
-		lan_Port_image_fail.setAttribute("height", "35");
-		lan_Port_image_fail.setAttribute("width", "35");
-		//pass image
-		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass_2.gif");
-		lan_Port_image_pass.setAttribute("height", "35");
-		lan_Port_image_pass.setAttribute("width", "35");
-		//No_tested image
-		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested_2.gif");
-		lan_Port_image_No_tested.setAttribute("height", "35");
-		lan_Port_image_No_tested.setAttribute("width", "35");
-		var i_lan_Port_fail = "Failed";
-		var i_lan_Port_pass = "Pass";
-		var i_lan_Port_No_testde = "not_tested";
-		
-
-		var lan3port_items="{{lan3_items[0]}}";
-		var demolanPort3 = document.getElementById("demolanPort3");
-		var td3_lanPort3 = document.createElement("td");
-		var tr3_lanPort3 = document.createElement("tr");
-		if (i_lan_Port_pass == lan3port_items )
-		{
-			tr3_lanPort3.appendChild(lan_Port_image_pass);
-			demolanPort3.appendChild(tr3_lanPort3);
-		}
-		else if (i_lan_Port_fail == lan3port_items)
-		{
-			tr3_lanPort3.appendChild(lan_Port_image_fail);
-			demolanPort3.appendChild(tr3_lanPort3);	
-		
-		}
-		else
-		{
-			tr3_lanPort3.appendChild(lan_Port_image_No_tested);
-			demolanPort3.appendChild(tr3_lanPort3);
-		}
-	}
-
-function lan4_ping()
-	{//lan4_items
-		var lan_Port_image_fail = document.createElement("img");
-		var lan_Port_image_pass = document.createElement("img");
-		var lan_Port_image_No_tested = document.createElement("img");		
-		//fail image
-		lan_Port_image_fail.setAttribute("src", "static/drawing/LAN_Port_Fail_2.gif");
-		lan_Port_image_fail.setAttribute("height", "35");
-		lan_Port_image_fail.setAttribute("width", "35");
-		//pass image
-		lan_Port_image_pass.setAttribute("src", "static/drawing/LAN_Port_Pass_2.gif");
-		lan_Port_image_pass.setAttribute("height", "35");
-		lan_Port_image_pass.setAttribute("width", "35");
-		//No_tested image
-		lan_Port_image_No_tested.setAttribute("src", "static/drawing/LAN_No_tested_2.gif");
-		lan_Port_image_No_tested.setAttribute("height", "35");
-		lan_Port_image_No_tested.setAttribute("width", "35");
-		var i_lan_Port_fail = "Failed";
-		var i_lan_Port_pass = "Pass";
-		var i_lan_Port_No_testde = "not_tested";
-		
-
-		var lan4port_items="{{lan4_items[0]}}";
-		var demolanPort4 = document.getElementById("demolanPort4");
-		var td4_lanPort4 = document.createElement("td");
-		var tr4_lanPort4 = document.createElement("tr");
-		if (i_lan_Port_pass == lan4port_items )
-		{
-			tr4_lanPort4.appendChild(lan_Port_image_pass);
-			demolanPort4.appendChild(tr4_lanPort4);
-		}
-		else if (i_lan_Port_fail == lan4port_items)
-		{
-			tr4_lanPort4.appendChild(lan_Port_image_fail);
-			demolanPort4.appendChild(tr4_lanPort4);	
-		
-		}
-		else
-		{
-			tr4_lanPort4.appendChild(lan_Port_image_No_tested);
-			demolanPort4.appendChild(tr4_lanPort4);
-		}
 	}
 function eth0_mac()
 	{

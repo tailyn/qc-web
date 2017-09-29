@@ -12,11 +12,11 @@
 	<form name="clock" action="/serial_id" method="POST" >
 	<table border="1" cellpadding="5" style="" align="center" bgcolor="#0080FF" width="450" height="300">
 	<tr>                                             
-    	<td>CPU ID：<input type="text" name="cpu_id" id="input_id" onKeyPress="return FormEnterKey(event)" maxlength="11" size="11" value="" align="center" ></td>
+    	<td>CPU ID: <input type="text" name="cpu_id" id="input_id" onKeyPress="return FormEnterKey(event)" maxlength="11" size="11" value="" align="center" ></td>
     	</tr>
-	<!--<tr>                                             
-    	<td>Backplane ID：<input type="text" name="backplane_id" onKeyPress="return FormEnterKey(event)" maxlength="9" size="9" value="" align="center"></td>
-    	</tr>-->
+	<tr>                                             
+    	<td>MAC1 ID: <input type="text" name="mac1_input_id" id="mac1_input_id"  onKeyPress="return FormEnterKey(event)" maxlength="17" size="17" value="" align="center"></td>
+    	</tr>
 	<tr>                                             
     	<td  id="demoeth0"></td>
     	</tr>	
@@ -60,13 +60,27 @@
 <script type="text/javascript">
 function check_id(){
      var check_id = document.getElementById("input_id").value;
-     if(!check_id.indexOf("AM"))
-	{
-		if(check_id.length == 11)
+     var mac_id = document.getElementById("input_id").value;
+
+		if(check_id.length == 9) 
 		{	
 			if(!((check_id.keyCode>=48&&check_id.keyCode<=57)||(check_id.keyCode>=65&&check_id.keyCode<=90)))	
-			{			
-				return 0;
+			{
+				if(mac_id.length=17)
+                        	{ 
+					if(!((check_id.keyCode>=48&&check_id.keyCode<=58)||(check_id.keyCode>=65&&check_id.keyCode<=90)))
+					{
+						return 0;
+					}
+					else
+					{
+						return false;
+					}
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
@@ -78,11 +92,6 @@ function check_id(){
 		{
 			return false;	
 		}	
-	}
-     else
-	{
-		return false;
-	}
 }
 function FormEnterKey(e) {
      var key;

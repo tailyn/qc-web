@@ -1,76 +1,34 @@
 #!/bin/sh
 
-echo 1 > /sys/class/gpio/gpio492/value
-echo 1 > /sys/class/gpio/gpio493/value
-echo 1 > /sys/class/gpio/gpio494/value
-echo 1 > /sys/class/gpio/gpio495/value
+echo "out" > /sys/class/edm/gpio/GPIO_5V1/direction
+echo "out" > /sys/class/edm/gpio/GPIO_5V3/direction
 
 while true; do
 
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio488/direction')" != "in" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
-fi
+echo "1" > /sys/class/edm/gpio/GPIO_5V1/value
+echo "1" > /sys/class/edm/gpio/GPIO_5V3/value
 
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio488/value')" != "1" ]]; then
-        echo "Failed" > results/GPIO/result.txt
-        exit
+if [[ "$( cat /sys/class/edm/gpio/GPIO_5V4/value )" == "1" ]]; then
+	sleep 1
+	echo "0" > /sys/class/edm/gpio/GPIO_5V3/value
+	if [[ "$( cat /sys/class/edm/gpio/GPIO_5V4/value )" == "0" ]]; then
 
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio489/direction')" != "in" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio489/value')" != "1" ]]; then
-        echo "Failed" > results/GPIO/result.txt
-        exit
-
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio490/direction')" != "in" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio490/value')" != "1" ]]; then
-        echo "Failed" > results/GPIO/result.txt
-        exit
-
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio491/direction')" != "in" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio491/value')" != "1" ]]; then
-        echo "Failed" > results/GPIO/result.txt
-        exit
-
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio492/direction')" != "out" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio493/direction')" != "out" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio494/direction')" != "out" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
-fi
-
-if [[ "$( sh -c 'cat /sys/class/gpio/gpio495/direction')" != "out" ]]; then
-	echo "Failed" > results/GPIO/result.txt
-	exit
+		if [[ "$( cat /sys/class/edm/gpio/GPIO_5V2/value )" == "1" ]]; then
+		        sleep 1                                                            
+        		echo "0" > /sys/class/edm/gpio/GPIO_5V1/value
+			if [[ "$( cat /sys/class/edm/gpio/GPIO_5V2/value )" == "0" ]]; then
+				echo "Pass" > results/GPIO/result.txt
+			else
+				echo "Failed" > results/GPIO/result.txt
+			fi
+		else
+			echo "Failed" > results/GPIO/result.txt
+		fi
+	else
+		echo "Failed" > results/GPIO/result.txt
+	fi
 else
-	echo "Pass" > results/GPIO/result.txt
+	echo "Failed" > results/GPIO/result.txt
 fi
 
 sleep 2
